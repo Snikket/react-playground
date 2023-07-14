@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import NewExpense from './components/NewExpense/NewExpense';
 import Expenses from './components/Expenses/Expenses';
 function App() {
@@ -30,12 +30,20 @@ function App() {
   // React.createElement(Expenses, { expenses: expenses })
   //);
 
-  return (
-    <div>
-      <NewExpense/>
-      <Expenses expenses={expenses} />
+  const [validationMessage, setMessage] = useState('Invalid Message')
+  const titleChangeHandler = (event) => {
+    setMessage(event.target.value);
+    /*        setUserInput((prevState) => {
+                return { ...prevState, enteredTitle: event.target.value };
+            })*/
+  }
 
-    </div>
+  return (
+      <form>
+        <label>Your message</label>
+        <input type="text" />
+        <p>Invalid message</p>
+      </form>
   );
 }
 
